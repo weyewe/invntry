@@ -1,0 +1,44 @@
+<!--Header-->
+<div id="header"> 
+  <!--Container-->
+  <div class="container clearfix"> 
+    <!--Logo--> 
+    <img id="logo" src="/images/assets/logo.png" alt="logo" /> 
+    <!--Menu-->
+    <ul id="menu" class="clearfix">
+      <li><a class="" href="index.html">Dashboard</a></li>
+      <!-- <li><a href="typography.html">MasterData</a></li> -->
+      <li><%= link_to "MasterData" , master_specs_url, :class => master_class( params ) %></li>
+      <li class="dropdown"> <a href="settings.html">Settings</a>
+        <ul>
+          <li>Section</li>
+          <li><a href="#">Section #1</a></li>
+          <li><a href="#">Section #2</a></li>
+        </ul>
+      </li>
+      <li><a href="login.html">Logout</a></li>
+    </ul>
+    <!--Navigation-->
+    <ul class="clearfix" id="navigation">
+      <li class="current"><a class="current" href="#"><img alt="dashboard" class="icon" src="/images/assets/dashboard.png"/>Dashboard</a></li>
+      <li><a href="#modaldemo" rel="modal"><img alt="inbox" class="icon" src="/images/assets/inbox.png"/>Inbox<span class="notification" rel="tooltip" original-title="You have 15 new messages">15</span></a>
+        <ul>
+          <li><a href="#" title="">Write New</a></li>
+          <li><a href="#" title="">Junk</a></li>
+          <li><a href="#" title="">Deleted</a></li>
+        </ul>
+      </li>
+      <li> <a href="#"><img alt="layout" class="icon" src="/images/assets/layout.png"/>Layouts</a>
+        <ul>
+          <li><a href="#" title="">Add New</a></li>
+          <li><a href="#" title="">Edit</a></li>
+          <li><a href="#" title="">View</a></li>
+        </ul>
+      </li>
+      <li><a href="http://themeforest.com" title="Navigation with Link" target="_new"><img alt="statistics" class="icon" src="/images/assets/statistics.png"/>Statistics</a></li>
+      <li class="separator"></li>
+    </ul>
+    <!--end container--> 
+  </div>
+  <!--end #header--> 
+</div>

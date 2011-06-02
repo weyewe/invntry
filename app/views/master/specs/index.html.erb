@@ -1,0 +1,23 @@
+<h1>Listing master_specs</h1>
+
+<table>
+  <tr>
+    <th>Spec</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @master_specs.each do |master_spec| %>
+  <tr>
+    <td><%= master_spec.spec %></td>
+    <td><%= link_to 'Show', master_spec %></td>
+    <td><%= link_to 'Edit', edit_master_spec_path(master_spec) %></td>
+    <td><%= link_to 'Destroy', master_spec, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Spec', new_master_spec_path %>

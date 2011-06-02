@@ -1,0 +1,21 @@
+<%= form_for(@master_spec) do |f| %>
+  <% if @master_spec.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@master_spec.errors.count, "error") %> prohibited this master_spec from being saved:</h2>
+
+      <ul>
+      <% @master_spec.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :spec %><br />
+    <%= f.text_field :spec %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

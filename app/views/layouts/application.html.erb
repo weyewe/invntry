@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Adminbase</title>
+  
+  <%= render :partial => "layouts/admin_css" %>
+  <%= render :partial => "layouts/admin_javascripts" %>
+
+
+  <%= csrf_meta_tag %>
+
+</head>
+<body>
+<%= render :partial => "layouts/header" %>
+<%= yield %>
+
+<%= render :partial =>"layouts/content" %>
+
+</body>
+</html>

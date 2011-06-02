@@ -1,0 +1,23 @@
+<h1>Listing master_items</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @master_items.each do |master_item| %>
+  <tr>
+    <td><%= master_item.name %></td>
+    <td><%= link_to 'Show', master_item %></td>
+    <td><%= link_to 'Edit', edit_master_item_path(master_item) %></td>
+    <td><%= link_to 'Destroy', master_item, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Item', new_master_item_path %>
