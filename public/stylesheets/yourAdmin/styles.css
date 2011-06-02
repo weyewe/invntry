@@ -859,6 +859,7 @@ background: url(images/bg_button.png) repeat-x top;
 	-webkit-box-shadow: 0px 1px 3px #A7A7A7;
 	-moz-box-shadow: 0px 1px 3px #A7A7A7;
 	text-shadow: 0px -1px 0px #252628;
+	cursor : pointer;
 }
 button.secondary,
 .button.secondary {

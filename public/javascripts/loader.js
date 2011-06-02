@@ -69,8 +69,13 @@ $(document).ready(function()
 	
 	$('.box .header h2 a').click(function(e) /*header title*/
 	{
-		e.preventDefault();	
-		boxToggle($(this));
+	  if( $(this).hasClass("addEntry") ){
+	    e.preventDefault();	
+	  }else{
+	    e.preventDefault();	
+  		boxToggle($(this));
+	  }
+		
 	});
 	
 	//----------------------------
