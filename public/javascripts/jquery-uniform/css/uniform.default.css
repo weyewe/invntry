@@ -608,3 +608,13 @@ div.uploader input {
   border: none;
   cursor: default;
 }
+
+
+/* Modification for admin base*/
+
+div.selector {
+  width: 75px;
+}
+div.selector span {
+  width: 50px;
+}
