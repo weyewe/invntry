@@ -3,6 +3,7 @@ class Master::SpecsController < ApplicationController
   # GET /master/specs.xml
   def index
     @master_specs = Master::Spec.all
+    @master_categories = Master::Category.all
     @category = Master::Category.new 
 
     respond_to do |format|

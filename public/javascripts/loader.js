@@ -161,7 +161,12 @@ $(document).ready(function()
 	// jQuery Facebox Modal
 	$('a[rel*=modal]').facebox({ opacity: 0.6 }); 
 	// jQuery Datables
-	$('.datatable').dataTable ({ "sPaginationType": "full_numbers" });
+	var dataTableCollection= new Object();
+	$(".datatable").each(function(){
+	  var id = $(this).attr("id");
+	  dataTableCollection[id] = $(this).dataTable ({ "sPaginationType": "full_numbers" });
+	});
+  // $('.datatable').dataTable ({ "sPaginationType": "full_numbers" });
 	// JQuery Uniform
 	$("select, input[type='checkbox'], input[type='radio'], input[type='file']").uniform();
 	// jQuery Tipsy
@@ -169,4 +174,53 @@ $(document).ready(function()
 	// jQuery Superfish
 	$("#menu").superfish({ speed: 'fast',delay: 300,autoArrows: false });
 	
+	
+	//----------------------------
+	//     App-specific
+	//----------------------------
+	$("form#new_master_category input.modal_submit").live('click', function(){
+    $(this).hide();
+    var form = $(this).parents("form.modal_form");
+    $("img.ajax-loader", form).show();
+    $.ajax({
+      url: form.attr('action'),
+      type: "POST",
+      data: form.serialize(),
+      dataType: "json",
+      success: function( returnValue ){
+        // alert( returnValue.length ) ;
+        // add to the corresponding dataTable
+        // if save is successful
+        // addToDataTable( returnValue ); 
+        // else 
+        // add the error notification
+        // end
+        // console.log( returnValue instanceof Array  ) ;
+        //     console.log( returnValue );
+        //     
+        //     for( var property in  returnValue ) {
+        //       console.log( property );
+        //     }
+        var category = returnValue["category"];
+        var edit_href = $("a#edit_category_link").attr("href").replace(/:id/g, category["id"]);
+        var edit_link = "<a href=\"" + edit_href + "\" >Edit</a>";
+        dataTableCollection["category"].fnAddData(
+            [category["name"], 29, edit_link ]
+          );
+        // $("table#category").fnAddData([category["name"], 29, "Boom | Desob"]);
+      }
+    });
+    
+    $.facebox.close(); 
+	  return false;
+	  
+	});
+	
+	
+	// add the loader to all modal_submit
+	$("form input.modal_submit").each(function(){
+	  var ajax_loader = $("img#ajax-loader").clone();
+	  ajax_loader.attr("id", "");
+	  $(this).after( ajax_loader );
+	});
 });

@@ -256,7 +256,7 @@
         <!--Content-->
         <div class="content clearfix"> 
           <!--Table-->
-          <table class="datatable">
+          <table class="datatable" id="browser">
             <thead>
               <tr>
                 <th class="sorting_asc"> Rendering engine </th>
@@ -741,6 +741,18 @@
                                   </tr>
                                 </thead>
                                 <tbody>
+                                  <% for category in @master_categories %>
+                                    <tr class="gradeA odd">
+                                      <td class=" sorting_1"><%= category.name %></td>
+                                      <td>30</td>
+                                      <td>
+                                        <%= link_to "Edit", edit_master_category_url(category.id) %> 
+                                        | 
+                                        <%= link_to "Destroy", master_category_url(category.id) %>
+                                      </td>
+                                    </tr>
+                                  <% end %>
+                                  <!--
                                   <tr class="gradeA odd">
                                     <td class=" sorting_1">Fast Moving</td>
                                     <td>30</td>
@@ -1040,7 +1052,7 @@
                                     <td class=" sorting_1">Strange Moving</td>
                                     <td>77</td>
                                     <td>Edit | Destroy</td>
-                                  </tr>
+                                  </tr> -->
                                   
                                 </tbody>
                               </table>
@@ -1059,7 +1071,7 @@
                           <!--Content-->
                           <div class="content"> 
                             <!--Table-->
-                            <table class="datatable">
+                            <table class="datatable" id="category_shite">
                               <thead>
                                 <tr>
                                   <th class="sorting_asc">Categories </th>
@@ -1229,10 +1241,10 @@
 
 <!--content for adding new category -->
 <div id="modal_new_master_category" style="display:none;">
-  <% form_for @category do |f| %>
+  <% form_for @category, :html=> {:class => "modal_form"} do |f| %>
     <%= f.label :name  , "New Category Name" %>
     <%= f.text_field :name %>
-    <%= f.submit "Submit", :class => "button"%>
+    <%= f.submit "Submit", :class => "button modal_submit"%>
   <% end %>
 <div>
 <!--demo content for facebox-->
@@ -1286,4 +1298,8 @@
     </li>
   </ul>
 </div>
+
+<%= link_to "", edit_master_category_url(":id") , :style=>"display:none;" , :id=> "edit_category_link"%>
+<%= link_to "", master_category_url(":id") , :style=>"display:none;" , :id=> "destroy_category_link"%>
+<img src="/images/ajax-loader.gif" style="display:none;" id="ajax-loader" class="ajax-loader" />
 </body>

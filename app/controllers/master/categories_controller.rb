@@ -41,14 +41,17 @@ class Master::CategoriesController < ApplicationController
   # POST /master/categories.xml
   def create
     @master_category = Master::Category.new(params[:master_category])
-
+    # @master_categories = Master::Category.all
+    
     respond_to do |format|
       if @master_category.save
         format.html { redirect_to(@master_category, :notice => 'Category was successfully created.') }
         format.xml  { render :xml => @master_category, :status => :created, :location => @master_category }
+        format.json { render :json => @master_category.to_json , :status => :created }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @master_category.errors, :status => :unprocessable_entity }
+        format.json { render :json => @master_category.errors.to_json, :status => "error"}
       end
     end
   end
